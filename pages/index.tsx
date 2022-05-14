@@ -4,9 +4,17 @@ import Image from 'next/image'
 import Feed from '../components/Feed'
 import Sidebar from "../components/Sidebar"
 import Widgets from '../components/Widgets'
+import { Tweet } from '../typings'
 import { fetchTweets } from '../utils/fetchTweets'
 
-const Home: NextPage = (props: Props) => {
+interface Props {
+  tweets: Tweet[]
+}
+
+const Home = ({ tweets }: Props) => {
+  // console.log(tweets)
+
+
   return (
     <div className="mx-auto  max-h-screen overflow-hidden
     lg:max-w-6xl">
@@ -20,7 +28,7 @@ const Home: NextPage = (props: Props) => {
       <main className="grid grid-cols-9">
         <Sidebar />
 
-        <Feed />
+        <Feed tweets={tweets} />
 
         <Widgets />
       </main>
@@ -34,7 +42,7 @@ const Home: NextPage = (props: Props) => {
 
 
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      {/* <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
           className="flex items-center justify-center gap-2"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -44,7 +52,7 @@ const Home: NextPage = (props: Props) => {
           Powered by{' '}
           <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }
