@@ -1,5 +1,9 @@
 
 export interface Tweet extends TwetBody {
+    image: JSX.Element
+    text: ReactNode
+    username: ReactNode
+    profileImg: string | undefined
     _id: string
     _createdAt: string
     _updatedAt: string
