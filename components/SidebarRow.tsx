@@ -4,15 +4,20 @@ import { SVGProps } from 'react'
 interface Props {
     Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element
     title: string
+    onClick?: () => {}
 }
-function SidebarRow({Icon, title}: Props) {
+
+
+function SidebarRow({Icon, title, onClick }: Props) {
   return (
-    <div className='group flex max-w-fit cursor-pointer
+    <div onClick={() => onClick?.()}className='group flex max-w-fit cursor-pointer
     items-center space-x-2 rounded-full px-4 py-3 tranistion-all
     duration-200 hover:bg-gray-100'>
         <Icon className='h-6 w-6' />
-        <p className='hidden  group-hover:text-saturnbay
-        md:inline-flex text-base font-light'>{title}</p>
+        <p className='hidden text-base font-light
+        group-hover:text-saturnbay md:inline-flex lg:text-xl'>
+          {title}
+        </p>
     </div>
   )
 }
