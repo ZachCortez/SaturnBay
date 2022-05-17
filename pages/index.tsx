@@ -1,6 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { Toaster } from 'react-hot-toast'
 import Feed from '../components/Feed'
 import Sidebar from "../components/Sidebar"
