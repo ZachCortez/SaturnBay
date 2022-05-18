@@ -21,7 +21,7 @@ export default async function handler(
         tweetId,
     })
 
-    console.log('Comments >>>', comments)
+    // console.log('Comments >>>', comments)
 
   res.status(200).json(comments)
 }
