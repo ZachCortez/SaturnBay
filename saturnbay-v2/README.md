@@ -19,3 +19,7 @@ Responsive corporate landing page, four divisions (technology, motorsports, merc
 ## Safety
 
 The old Blazon code is preserved at `backup/blazon-community-original`. The current `main` branch is unchanged. This work is on `feature/saturnbay-homepage-v2` and does not yet migrate or integrate Blazon's backend.
+
+## GitHub Pages preview
+
+Deploy via the GitHub Actions workflow from this feature branch after enabling Pages in repository settings.
