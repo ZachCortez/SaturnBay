@@ -1,0 +1,45 @@
+name: Deploy SaturnBay v2 to GitHub Pages
+on:
+  push:
+    branches: [feature/saturnbay-homepage-v2]
+    paths:
+      - 'saturnbay-v2/**'
+      - '.github/workflows/saturnbay-pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: saturnbay-v2/package-lock.json
+      - name: Install dependencies
+        working-directory: saturnbay-v2
+        run: npm install
+      - name: Build static site
+        working-directory: saturnbay-v2
+        env:
+          GITHUB_PAGES: 'true'
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: saturnbay-v2/out
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
